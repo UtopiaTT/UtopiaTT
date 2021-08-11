@@ -1,0 +1,3 @@
+rootProject.name = "kongchenliang20210806"
+include ':app'
+include ':mvp'

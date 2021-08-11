@@ -1,0 +1,71 @@
+plugins {
+    id 'com.android.application'
+    id 'org.greenrobot.greendao' // apply plugin
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.bw.kongchenliang"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    greendao {
+        schemaVersion 1 //数据库版本号
+        daoPackage 'com.bw.kongchenliang.db'// 设置DaoMaster、DaoSession、Dao   一般包名+文件夹名
+        targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录   文件生成的目录，相当于父级目录
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation (name: 'alipaysdk-15.8.01.210112203525', ext: 'aar')
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.6'//加密库依赖（可选项）
+    implementation 'com.youth.banner:banner:1.4.10'
+//网络框架
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+//日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
+//Android X 包含DM RecyclerView
+    implementation 'com.google.android.material:material:1.1.0'
+//万能适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+
+//RxJava依赖
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+//RxJava2 Adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+//Gson converter gson解析
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    //核心必须依赖
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.3'
+//经典刷新头
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.3'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation project(path: ':mvp')
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
